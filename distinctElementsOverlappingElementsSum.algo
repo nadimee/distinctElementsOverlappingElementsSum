@@ -1,0 +1,74 @@
+ALGORITHM Find_Sum
+VAR
+numSetOne : ARRAY_OF INTEGER[5]; //problem 1&2 solution 1 and used with hasht
+numSetTwo : ARRAY_OF INTEGER[5]; //problem 1&2 solution 1 and used with hasht
+sum := 0;                        //problem 1&2 solution 1&2 update sum to 0 in each solution
+hashTOne : HASH_TABLE<INTEGER,INTEGER>; //problem 1&2 solution 2
+hashTTwo : HASH_TABLE<INTEGER,INTEGER>; //problem 1&2 solution 2
+BEGIN
+numSetOne := {5,8,6,65,48};      //problem 1 solution 1 array
+numSetTwo := {12,48,4,6,65};     //problem 1 solution 1 array
+//problem 1 solution 1 array//problem 1 solution 1 array//problem 1 solution 1 array//problem 1 solution 1 array//problem 1 solution 1 array
+FOR i FROM 0 TO 4 STEP 1  DO
+IF (numSetOne[i]<>numSetTwo[0] AND numSetOne[i]<>numSetTwo[1] AND numSetOne[i]<>numSetTwo[2] AND numSetOne[i]<>numSetTwo[3] AND 
+    numSetOne[i]<>numSetTwo[4]) THEN
+    sum := sum + numSetOne[i];
+END_IF
+IF (numSetTwo[i]<>numSetOne[0] AND numSetTwo[i]<>numSetOne[1] AND numSetTwo[i]<>numSetOne[2] AND numSetTwo[i]<>numSetOne[3] AND 
+    numSetTwo[i]<>numSetOne[4]) THEN
+    sum := sum + numSetTwo[i];
+END_IF
+END_FOR
+//problem 1 solution 2 hasht//problem 1 solution 2 hasht//problem 1 solution 2 hasht//problem 1 solution 2 hasht//problem 1 solution 2 hasht
+sum := 0; 
+FOR i FROM 0 TO 4 STEP 1  DO
+    hashTOne.insert(i,numSetOne[i]);
+    hashTTwo.insert(i,numSetTwo[i]);
+    IF (i=4) THEN
+        FOR i FROM 0 TO 4 STEP 1  DO
+            IF (hashTOne.get(i)<>hashTTwo.get(0) AND hashTOne.get(i)<>hashTTwo.get(1) AND hashTOne.get(i)<>hashTTwo.get(2) AND
+            hashTOne.get(i)<>hashTTwo.get(3) AND hashTOne.get(i)<>hashTTwo.get(4)) THEN
+                sum := sum + hashTOne.get(i);
+            END_IF
+        END_FOR
+        FOR i FROM 0 TO 4 STEP 1  DO
+            IF (hashTTwo.get(i)<>hashTOne.get(0) AND hashTTwo.get(i)<>hashTOne.get(1) AND hashTTwo.get(i)<>hashTOne.get(2) AND
+            hashTTwo.get(i)<>hashTOne.get(3) AND hashTTwo.get(i)<>hashTOne.get(4)) THEN
+                sum := sum + hashTTwo.get(i);
+            END_IF
+        END_FOR
+    END_IF
+END_FOR
+//problem 2 solution 1 array//problem 2 solution 1 array//problem 2 solution 1 array//problem 2 solution 1 array//problem 2 solution 1 array
+sum := 0; 
+FOR i FROM 0 TO 4 STEP 1  DO
+IF (numSetOne[i]=numSetTwo[0] OR numSetOne[i]=numSetTwo[1] OR numSetOne[i]=numSetTwo[2] OR numSetOne[i]=numSetTwo[3] OR 
+    numSetOne[i]=numSetTwo[4]) THEN
+    sum := sum + numSetOne[i];
+END_IF
+IF (numSetTwo[i]=numSetOne[0] OR numSetTwo[i]=numSetOne[1] OR numSetTwo[i]=numSetOne[2] OR numSetTwo[i]=numSetOne[3] OR 
+    numSetTwo[i]=numSetOne[4]) THEN
+    sum := sum + numSetTwo[i];
+END_IF
+END_FOR
+//problem 2 solution 2 hasht//problem 2 solution 2 hasht//problem 2 solution 2 hasht//problem 2 solution 2 hasht//problem 2 solution 2 hasht
+sum := 0; 
+FOR i FROM 0 TO 4 STEP 1  DO
+    hashTOne.insert(i,numSetOne[i]);
+    hashTTwo.insert(i,numSetTwo[i]);
+    IF (i=4) THEN
+        FOR i FROM 0 TO 4 STEP 1  DO
+            IF (hashTOne.get(i)=hashTTwo.get(0) OR hashTOne.get(i)=hashTTwo.get(1) OR hashTOne.get(i)=hashTTwo.get(2) OR
+            hashTOne.get(i)=hashTTwo.get(3) OR hashTOne.get(i)=hashTTwo.get(4)) THEN
+                sum := sum + hashTOne.get(i);
+            END_IF
+        END_FOR
+        FOR i FROM 0 TO 4 STEP 1  DO
+            IF (hashTTwo.get(i)=hashTOne.get(0) OR hashTTwo.get(i)=hashTOne.get(1) OR hashTTwo.get(i)=hashTOne.get(2) OR
+            hashTTwo.get(i)=hashTOne.get(3) OR hashTTwo.get(i)=hashTOne.get(4)) THEN
+                sum := sum + hashTTwo.get(i);
+            END_IF
+        END_FOR
+    END_IF
+END_FOR
+END
