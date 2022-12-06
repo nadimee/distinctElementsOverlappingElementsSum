@@ -2,7 +2,7 @@ ALGORITHM Find_Sum
 VAR
 numSetOne : ARRAY_OF INTEGER[5]; //problem 1&2 solution 1 and used with hasht
 numSetTwo : ARRAY_OF INTEGER[5]; //problem 1&2 solution 1 and used with hasht
-sum := 0;                        //problem 1&2 solution 1&2 update sum to 0 in each solution
+sum : INTEGER := 0;                        //problem 1&2 solution 1&2 update sum to 0 in each solution
 hashTOne : HASH_TABLE<INTEGER,INTEGER>; //problem 1&2 solution 2
 hashTTwo : HASH_TABLE<INTEGER,INTEGER>; //problem 1&2 solution 2
 BEGIN
